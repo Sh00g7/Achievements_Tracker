@@ -1,27 +1,43 @@
-# Terraria All Achievements
+# Terraria Achievements Tracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+## Setup
 
-## Development server
+Client
+Download [Node.js](https://nodejs.org/en/download)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+`cd Terraria-Achievements-Tracker\client`
 
-## Code scaffolding
+`npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Server
+Download [.NET](https://dotnet.microsoft.com/en-us/download/dotnet)
 
-## Build
+`cd Terraria-Achievements-Tracker\server`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Add your Steam ID and path to achievements-steam.dat to the C# file
 
-## Running unit tests
+`dotnet build`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Download [Python](https://www.python.org/downloads/)
 
-## Running end-to-end tests
+Create a virtual environment
+`pip install virtualenv`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+`python -m venv venv`
 
-## Further help
+`.\venv\Scripts\activate`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+`pip install -r requirements.txt`
+
+## Run
+
+Client
+`npm start`
+
+Server
+`python server.py`
+
+# Exit
+
+Client and Server
+`ctrl + c`
