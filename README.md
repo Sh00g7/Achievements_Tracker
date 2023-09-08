@@ -2,14 +2,16 @@
 
 ## Setup
 
-Client
+### Client
+
 Download [Node.js](https://nodejs.org/en/download)
 
 `cd Terraria-Achievements-Tracker\client`
 
 `npm install`
 
-Server
+### Server
+
 Download [.NET](https://dotnet.microsoft.com/en-us/download/dotnet)
 
 `cd Terraria-Achievements-Tracker\server`
@@ -21,6 +23,7 @@ Add your Steam ID and path to achievements-steam.dat to the C# file
 Download [Python](https://www.python.org/downloads/)
 
 Create a virtual environment
+
 `pip install virtualenv`
 
 `python -m venv venv`
@@ -31,13 +34,13 @@ Create a virtual environment
 
 ## Run
 
-Client
+### Client
 `npm start`
 
-Server
+### Server
 `python server.py`
 
 # Exit
 
-Client and Server
+### Client and Server
 `ctrl + c`
