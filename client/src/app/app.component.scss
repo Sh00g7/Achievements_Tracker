@@ -1,0 +1,109 @@
+@import url('https://fonts.cdnfonts.com/css/andy');
+
+#refresh-label {
+    width: 200px;
+    padding-right: 80px;
+}
+
+.img-margin {
+    margin-right: 50px;
+}
+
+.npc-marq {
+    height: 58px;
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.ach-name {
+    display: block;
+    width: 75px;
+    white-space: initial;
+}
+
+.flex-ach {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+}
+
+.icons {
+    width: 90px;
+    display: inline-table;
+}
+
+.npc-names {
+    display: inline;
+    margin-right: 1%;
+}
+
+.centered {
+    display: block;
+    white-space: initial;
+    text-align: center;
+}
+
+.centerIcons {
+    display: flex;
+    justify-content: center;
+}
+
+.ach-name-black {
+    display: block;
+    width: 75px;
+    word-wrap: break-word;
+}
+
+.aa-icons {
+    margin-right: 2%;
+}
+
+.ach-div {
+    display: inline-table;
+}
+
+label {
+    // color: black;
+    color: white;
+    font-family: 'Andy', sans-serif;
+}
+
+button {
+    margin-top: 3%;
+    margin-bottom: 0.5%;
+    margin-right: 0.5%;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    overflow: auto;
+}
+
+.info {
+    font-size: 18px;
+}
+
+.sword-menu {
+    margin-top: 2%;
+    display: flex;
+    width: 700px;
+    justify-content: space-between;
+}
+
+.sword-icons {
+    height: 70px;
+}
+
+.sword-chckbx {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    width: 30px;
+    height: 30px;
+}

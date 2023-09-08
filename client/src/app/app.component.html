@@ -1,0 +1,88 @@
+<div>
+  <div *ngIf="allNpcsDefeated()" style="height: 40px;"></div>
+  <div style="display: flex;">
+    <label class="info" id="refresh-label">Refreshed {{refreshTime}} ago</label>
+    <label class="info" style="margin-left: 10%;">{{n_complete}}/{{n_achievements}} Achievements Completed</label>
+  </div>
+  <marquee scrollamount="5" style="width: 100%;" [ngClass]="{'npc-marq': getKeys(npcs,0).length > 0}">
+    <div *ngFor="let npc of getKeys(npcs,0) | keyvalue: keyOrder" class="ach-div">
+      <div *ngIf="showNpc(npc.value)">
+        <img src={{getIcon(npc.value,0)}} alt="image" class="img-margin">
+      </div>
+    </div>
+  </marquee>
+  <marquee scrollamount="5" style="width: 100%; height: 140px;">
+    <div *ngFor="let achievement of getKeys(achievements,1)" class="ach-div">
+      <img src={{getIcon(achievement,1)}} alt="image" class="img-margin" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false}">
+      <label class="ach-name">{{achievements[achievement]['name']}}</label>
+    </div>
+  </marquee>
+  <div class="flex-ach">
+    <div *ngFor="let ach of getKeys(otherAchs)" class="icons">
+      <div class="centerIcons">
+        <img src={{getIcon(ach,2)}} alt="image">
+      </div>
+      <label class="centered">{{otherAchs[ach]['name']}}</label>
+      <label class="centered">{{otherAchs[ach]['value']}} / {{otherAchs[ach]['max_value']}}</label>
+    </div>
+  </div>
+
+  <div>
+    <button (click)="toggleMissing()">Toggle Missing</button>
+    <button (click)="toggleCategory('all')">All</button>
+    <button (click)="toggleCategory('boss')">Bosses</button>
+    <button (click)="toggleCategory('event')">Events</button>
+    <button (click)="toggleCategory('enemy')">Enemies</button>
+    <button (click)="toggleCategory('npc')">NPCs</button>
+    <button (click)="toggleCategory('item')">Items</button>
+    <button (click)="toggleCategory('fish')">Fishing</button>
+    <button (click)="toggleCategory('other')">Other</button>
+  </div>
+  <div>
+    <div *ngFor="let npc of getKeys(npcs,0) | keyvalue: keyOrder" class="npc-names">
+      <label>{{getNpcName(npc.value)}}</label>
+    </div>
+  </div>
+  <div class="menu">
+    <div *ngFor="let achievement of getKeys(achievements)" class="">
+      <div *ngIf="displayMissing === true && achievements[achievement]['completed'] === false">
+        <div *ngIf="category === 'all'">
+          <div>
+            <img id={{achievement}} src={{getIcon(achievement,1)}} alt="image" class="aa-icons" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false}" (click)="toggleGrayscale($event)">
+          </div>
+          <label class="ach-name-black">{{achievements[achievement]['name']}}</label>
+        </div>
+        <div *ngIf="category !== 'all' && achievements[achievement]['category'] === category">
+          <div>
+            <img id={{achievement}} src={{getIcon(achievement,1)}} alt="image" class="aa-icons" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false}" (click)="toggleGrayscale($event)">
+          </div>
+          <label class="ach-name-black">{{achievements[achievement]['name']}}</label>
+        </div>
+      </div>
+      <div *ngIf="displayMissing === false">
+        <div *ngIf="category === 'all'">
+          <div>
+            <img id={{achievement}} src={{getIcon(achievement,1)}} alt="image" class="aa-icons" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false}" (click)="toggleGrayscale($event)">
+          </div>
+          <label class="ach-name-black">{{achievements[achievement]['name']}}</label>
+        </div>
+        <div *ngIf="category !== 'all' && achievements[achievement]['category'] === category">
+          <div>
+            <img id={{achievement}} src={{getIcon(achievement,1)}} alt="image" class="aa-icons" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false}" (click)="toggleGrayscale($event)">
+          </div>
+          <label class="ach-name-black">{{achievements[achievement]['name']}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sword-menu">
+    <div *ngFor="let sword of swords">
+      <div class="sword-icons">
+        <img src={{sword}} alt="image">
+      </div>
+      <div class="sword-chckbx">
+        <input type="checkbox" (click)="checkSword($event)">
+      </div>
+    </div>
+  </div>
+</div>
