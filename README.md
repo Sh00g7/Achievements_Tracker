@@ -32,7 +32,9 @@ Add Python to your PATH variables
 
   - Variable value: C:\Users\user\AppData\Local\Programs\Python\Python311\Scripts\
 
-  - *Replace user with your username
+    - *Replace user with your username
+
+  - Might need to restart Powershell
 
 Create a virtual environment
 
