@@ -6,7 +6,9 @@
 
 Download [Node.js](https://nodejs.org/en/download)
 
-`cd Terraria-Achievements-Tracker\client`
+Open Windows Powershell
+
+`cd path\to\Terraria-Achievements-Tracker\client`
 
 `npm install`
 
@@ -14,7 +16,9 @@ Download [Node.js](https://nodejs.org/en/download)
 
 Download [.NET Installer](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
-`cd Terraria-Achievements-Tracker\server`
+Open another tab in Windows Powershell
+
+`cd path\to\Terraria-Achievements-Tracker\server`
 
 Add your Steam ID and path to achievements-steam.dat to the C# file
 
