@@ -24,15 +24,15 @@ Download [Python](https://www.python.org/downloads/)
 
 Add Python to your PATH variables
 
-Control Panel > Systems and Security > System > Advanced system settings > Environment Variables...
+- Control Panel > Systems and Security > System > Advanced system settings > Environment Variables...
 
-Add a new user variable
+- Add a new user variable
 
-Variable name: Path
+  - Variable name: Path
 
-Variable value: C:\Users\user\AppData\Local\Programs\Python\Python311\Scripts\
+  - Variable value: C:\Users\user\AppData\Local\Programs\Python\Python311\Scripts\
 
-*Replace user with your username
+  - *Replace user with your username
 
 Create a virtual environment
 
