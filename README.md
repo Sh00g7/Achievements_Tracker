@@ -14,6 +14,8 @@ Open Windows Powershell
 
 ### Server
 
+Move the server folder into path\to\Terraria-Achievements-Tracker\
+
 Download [.NET Installer](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 
 Open another tab in Windows Powershell
