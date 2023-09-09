@@ -79,3 +79,12 @@ Add browser source
 Crop the view to not show the buttons
 
 Right click the source and select `Interact` to see the full view and be able to press the buttons
+
+
+## Scroller Options
+
+Show Completed: keeps completed achievement icons in the scroller (default is set to remove the completed achievements)
+
+Color Incomplete: Uses color instead of grayscale for incomplete achievements (default is set to use grayscale), useful when not showing completed achievements
+
+When all achievements are completed, they all appear in the scroller even if Show Completed is unchecked
