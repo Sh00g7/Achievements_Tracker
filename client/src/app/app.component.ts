@@ -140,6 +140,12 @@ export class AppComponent {
     // "SUPREME_HELPER_MINION": {"name": "Quests", "value": 0, "max_value": 200, "icon": "assets/images/Achievement_Supreme_Helper_Minion.webp"}
   };
 
+  fishing: any = [
+    "SERVANT_IN_TRAINING", "GOOD_LITTLE_SLAVE", "TROUT_MONKEY",
+    "FAST_AND_FISHIOUS", "SUPREME_HELPER_MINION", "GLORIOUS_GOLDEN_POLE",
+    "GET_CELL_PHONE"
+  ];
+
   npcs: any = {
     // Slimes
     "NPC_KILLED_-3": {"name": "Green Slime", "icon": "assets/EnemyIcons/Green_Slime.webp", "defeated": false, "order": 1},
@@ -207,10 +213,13 @@ export class AppComponent {
   refreshMin: number = 0;
   refreshSec: number = 0;
 
+  showAllAch: any = false;
+  colorIncomplete: any = false;
 
 
   ngOnInit() {
 
+    // How often the achievements refresh
     setInterval(() => {
       this.getAchievementsFromFile();
     }, 120000); // 2 minutes in milliseconds
@@ -240,68 +249,70 @@ export class AppComponent {
   getAchievementsFromFile() {
     this.appService.getAchievements().subscribe((achs: any) => {
       Object.keys(achs).forEach((ach: any) => {
-        var all_cond_completed = true;
-        Object.keys(achs[ach]['Conditions']).forEach((cond: any) => {
-          if(achs[ach]['Conditions'][cond]["Completed"] === false) {
-            all_cond_completed = false;
-          }
+        // Skip fishing achievements
+        if(!this.fishing.includes(ach)) {
+          var all_cond_completed = true;
+          Object.keys(achs[ach]['Conditions']).forEach((cond: any) => {
+            if(achs[ach]['Conditions'][cond]["Completed"] === false) {
+              all_cond_completed = false;
+            }
 
-          if(Object.keys(this.otherAchs).includes(ach)) {
-            if(ach === "GELATIN_WORLD_TOUR") {
-              // Dont count king slime here, it is counted in slayer of worlds
-              if(cond !== "NPC_KILLED_50") {
+            if(Object.keys(this.otherAchs).includes(ach)) {
+              if(ach === "GELATIN_WORLD_TOUR") {
+                // Dont count king slime here, it is counted in slayer of worlds
+                if(cond !== "NPC_KILLED_50") {
+                  if(!this.npcs[cond]["defeated"] && achs[ach]["Conditions"][cond]["Completed"]) {
+                    this.otherAchs["GELATIN_WORLD_TOUR"]["value"]++;
+                  }
+                  else if(this.npcs[cond]["defeated"] && !achs[ach]["Conditions"][cond]["Completed"]) {
+                    this.otherAchs["GELATIN_WORLD_TOUR"]["value"]--;
+                  }
+
+                  this.npcs[cond]["defeated"] = achs[ach]["Conditions"][cond]["Completed"];
+                }
+              }
+              else if(ach === "BULLDOZER") {
+                this.otherAchs["BULLDOZER"]["value"] = achs[ach]["Conditions"][cond]["Value"];
+              }
+              else if(ach === "MARATHON_MEDALIST") {
+                // value is in pixels, miles = total pixels / (16 pixels * 1/2 * 5280)
+                this.otherAchs["MARATHON_MEDALIST"]["value"] = Math.round((achs[ach]["Conditions"][cond]["Value"] / 42240) * 100) / 100;
+              }
+              else if(ach === "SLAYER_OF_WORLDS") {
                 if(!this.npcs[cond]["defeated"] && achs[ach]["Conditions"][cond]["Completed"]) {
-                  this.otherAchs["GELATIN_WORLD_TOUR"]["value"]++;
+                  this.otherAchs["SLAYER_OF_WORLDS"]["value"]++;
+
+                  if(cond === "NPC_KILLED_50") {
+                    this.otherAchs["GELATIN_WORLD_TOUR"]["value"]++;
+                  }
                 }
                 else if(this.npcs[cond]["defeated"] && !achs[ach]["Conditions"][cond]["Completed"]) {
-                  this.otherAchs["GELATIN_WORLD_TOUR"]["value"]--;
-                }
+                  this.otherAchs["SLAYER_OF_WORLDS"]["value"]--;
 
+                  if(cond === "NPC_KILLED_50") {
+                    this.otherAchs["GELATIN_WORLD_TOUR"]["value"]--;
+                  }
+                }
+                
                 this.npcs[cond]["defeated"] = achs[ach]["Conditions"][cond]["Completed"];
+                
+              }
+              else if(ach === "SUPREME_HELPER_MINION") {
+                this.otherAchs["SUPREME_HELPER_MINION"]["value"] = achs[ach]["Conditions"][cond]["Value"];
               }
             }
-            else if(ach === "BULLDOZER") {
-              this.otherAchs["BULLDOZER"]["value"] = achs[ach]["Conditions"][cond]["Value"];
-            }
-            else if(ach === "MARATHON_MEDALIST") {
-              // value is in pixels, miles = total pixels / (16 pixels * 1/2 * 5280)
-              this.otherAchs["MARATHON_MEDALIST"]["value"] = Math.round((achs[ach]["Conditions"][cond]["Value"] / 42240) * 100) / 100;
-            }
-            else if(ach === "SLAYER_OF_WORLDS") {
-              if(!this.npcs[cond]["defeated"] && achs[ach]["Conditions"][cond]["Completed"]) {
-                this.otherAchs["SLAYER_OF_WORLDS"]["value"]++;
+          });
 
-                if(cond === "NPC_KILLED_50") {
-                  this.otherAchs["GELATIN_WORLD_TOUR"]["value"]++;
-                }
-              }
-              else if(this.npcs[cond]["defeated"] && !achs[ach]["Conditions"][cond]["Completed"]) {
-                this.otherAchs["SLAYER_OF_WORLDS"]["value"]--;
-
-                if(cond === "NPC_KILLED_50") {
-                  this.otherAchs["GELATIN_WORLD_TOUR"]["value"]--;
-                }
-              }
-              
-              this.npcs[cond]["defeated"] = achs[ach]["Conditions"][cond]["Completed"];
-              
-            }
-            else if(ach === "SUPREME_HELPER_MINION") {
-              this.otherAchs["SUPREME_HELPER_MINION"]["value"] = achs[ach]["Conditions"][cond]["Value"];
-            }
+          if(!this.achievements[ach]['completed'] && all_cond_completed) {
+            this.n_complete += 1;
+            this.achievements[ach]['completed'] = true;
           }
-        });
-
-        if(!this.achievements[ach]['completed'] && all_cond_completed) {
-          this.n_complete += 1;
-          this.achievements[ach]['completed'] = true;
-        }
-        else if(this.achievements[ach]['completed'] && !all_cond_completed) {
-          this.n_complete -= 1;
-          this.achievements[ach]['completed'] = false;
+          else if(this.achievements[ach]['completed'] && !all_cond_completed) {
+            this.n_complete -= 1;
+            this.achievements[ach]['completed'] = false;
+          }
         }
       });
-      
     })
   }
 
@@ -311,6 +322,24 @@ export class AppComponent {
     }
     else {
       this.otherAchs['ZENITH']['value']--;
+    }
+  }
+
+  toggleCompletedInMarq(e: any) {
+    if(e['target']['checked']) {
+      this.showAllAch = true;
+    }
+    else {
+      this.showAllAch = false;
+    }
+  }
+
+  toggleColorForIncomplete(e: any) {
+    if(e['target']['checked']) {
+      this.colorIncomplete = true;
+    }
+    else {
+      this.colorIncomplete = false;
     }
   }
 
@@ -343,7 +372,7 @@ export class AppComponent {
       })
       return undefeatedNpcs;
     }
-    else if(i === 1 && this.n_complete !== this.n_achievements) {
+    else if(i === 1 && this.n_complete !== this.n_achievements && !this.showAllAch) {
       var incomplete: any = [];
       Object.keys(this.achievements).forEach((ach: any) => {
         if(!this.achievements[ach]['completed']) {

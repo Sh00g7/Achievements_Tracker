@@ -13,7 +13,7 @@
   </marquee>
   <marquee scrollamount="5" style="width: 100%; height: 140px;">
     <div *ngFor="let achievement of getKeys(achievements,1)" class="ach-div">
-      <img src={{getIcon(achievement,1)}} alt="image" class="img-margin" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false}">
+      <img src={{getIcon(achievement,1)}} alt="image" class="img-margin" [ngClass]="{'grayscale': achievements[achievement]['completed'] === false && colorIncomplete === false}">
       <label class="ach-name">{{achievements[achievement]['name']}}</label>
     </div>
   </marquee>
@@ -28,15 +28,15 @@
   </div>
 
   <div>
-    <button (click)="toggleMissing()">Toggle Missing</button>
-    <button (click)="toggleCategory('all')">All</button>
-    <button (click)="toggleCategory('boss')">Bosses</button>
-    <button (click)="toggleCategory('event')">Events</button>
-    <button (click)="toggleCategory('enemy')">Enemies</button>
-    <button (click)="toggleCategory('npc')">NPCs</button>
-    <button (click)="toggleCategory('item')">Items</button>
-    <button (click)="toggleCategory('fish')">Fishing</button>
-    <button (click)="toggleCategory('other')">Other</button>
+    <button class="filter-btn" (click)="toggleMissing()">Toggle Missing</button>
+    <button class="filter-btn" (click)="toggleCategory('all')">All</button>
+    <button class="filter-btn" (click)="toggleCategory('boss')">Bosses</button>
+    <button class="filter-btn" (click)="toggleCategory('event')">Events</button>
+    <button class="filter-btn" (click)="toggleCategory('enemy')">Enemies</button>
+    <button class="filter-btn" (click)="toggleCategory('npc')">NPCs</button>
+    <button class="filter-btn" (click)="toggleCategory('item')">Items</button>
+    <button class="filter-btn" (click)="toggleCategory('fish')">Fishing</button>
+    <button class="filter-btn" (click)="toggleCategory('other')">Other</button>
   </div>
   <div>
     <div *ngFor="let npc of getKeys(npcs,0) | keyvalue: keyOrder" class="npc-names">
@@ -83,6 +83,19 @@
       <div class="sword-chckbx">
         <input type="checkbox" (click)="checkSword($event)">
       </div>
+    </div>
+  </div>
+  <div style="margin-top: 1%;">
+    <div>
+      <label>----- Scroller Options -----</label>
+    </div>
+    <div>
+      <label>Show Completed</label>
+      <input type="checkbox" (click)="toggleCompletedInMarq($event)">
+    </div>
+    <div>
+      <label>Color Incomplete</label>
+      <input type="checkbox" (click)="toggleColorForIncomplete($event)">
     </div>
   </div>
 </div>
