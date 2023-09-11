@@ -216,33 +216,67 @@ export class AppComponent {
   showAllAch: any = false;
   colorIncomplete: any = false;
 
+  intervalID: any;
+  refreshID: any;
+
 
   ngOnInit() {
 
     // How often the achievements refresh
-    setInterval(() => {
-      this.getAchievementsFromFile();
-    }, 120000); // 2 minutes in milliseconds
+    // 2 minutes in milliseconds
+    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 120000); 
+    this.refreshID = setInterval(() => this.updateRefreshTimer(), 1000);
+  }
 
-    setInterval(() => {
-      if(this.refreshSec >= 59) {
-        this.refreshSec = -1;
-        this.refreshMin++;
-      }
+  resetTracker() {
+    clearInterval(this.intervalID);
+    clearInterval(this.refreshID);
 
-      if(this.refreshMin >= 2) {
-        this.refreshMin = 0;
-      }
+    this.refreshTime = "";
+    this.refreshMin = 0;
+    this.refreshSec = 0;
 
-      this.refreshSec++;
+    this.n_complete = 0;
 
-      if(this.refreshMin === 0) {
-        this.refreshTime = this.refreshSec.toString() + " sec";
-      }
-      else {
-        this.refreshTime = this.refreshMin.toString() + " min " + this.refreshSec.toString() + " sec";
-      }
-    }, 1000)
+    Object.keys(this.achievements).forEach((achievement: any) => {
+      this.achievements[achievement]['completed'] = false;
+    });
+
+    Object.keys(this.otherAchs).forEach((achievement: any) => {
+      this.otherAchs[achievement]['value'] = 0;
+    });
+
+    Object.keys(this.npcs).forEach((npc: any) => {
+      this.npcs[npc]['defeated'] = false;
+    });
+
+    this.swords.forEach((sword: any) => {
+      var ele = <HTMLInputElement> document.getElementById(sword);
+      ele.checked = false;
+    });
+
+    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 10000); 
+    this.refreshID = setInterval(() => this.updateRefreshTimer(), 1000);
+  }
+
+  updateRefreshTimer() {
+    if(this.refreshSec >= 59) {
+      this.refreshSec = -1;
+      this.refreshMin++;
+    }
+
+    if(this.refreshMin >= 2) {
+      this.refreshMin = 0;
+    }
+
+    this.refreshSec++;
+
+    if(this.refreshMin === 0) {
+      this.refreshTime = this.refreshSec.toString() + " sec";
+    }
+    else {
+      this.refreshTime = this.refreshMin.toString() + " min " + this.refreshSec.toString() + " sec";
+    }
   }
 
 
@@ -313,7 +347,7 @@ export class AppComponent {
           }
         }
       });
-    })
+    });
   }
 
   checkSword(e: any) {

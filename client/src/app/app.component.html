@@ -37,6 +37,7 @@
     <button class="filter-btn" (click)="toggleCategory('item')">Items</button>
     <button class="filter-btn" (click)="toggleCategory('fish')">Fishing</button>
     <button class="filter-btn" (click)="toggleCategory('other')">Other</button>
+    <button class="filter-btn" (click)="resetTracker()">Reset Tracker</button>
   </div>
   <div>
     <div *ngFor="let npc of getKeys(npcs,0) | keyvalue: keyOrder" class="npc-names">
@@ -81,7 +82,7 @@
         <img src={{sword}} alt="image">
       </div>
       <div class="sword-chckbx">
-        <input type="checkbox" (click)="checkSword($event)">
+        <input id={{sword}} type="checkbox" (click)="checkSword($event)">
       </div>
     </div>
   </div>
