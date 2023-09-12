@@ -25,7 +25,7 @@ export class AppComponent {
     "BEGONE_EVIL": {"name": "Begone, Evil!", "completed": false, "category": "other", "icon": "assets/images/Achievement_Begone_Evil.webp"},
     "BENCHED": {"name": "Benched", "completed": false, "category": "item", "icon": "assets/images/Achievement_Benched.webp"},
     "BIG_BOOTY": {"name": "Big Booty", "completed": false, "category": "other", "icon": "assets/images/Achievement_Big_Booty.webp"},
-    // "GET_CELL_PHONE": {"name": "Black Mirror", "completed": false, "category": "item", "icon": "assets/images/Achievement_Black_Mirror.webp"},
+    "GET_CELL_PHONE": {"name": "Black Mirror", "completed": false, "category": "item", "icon": "assets/images/Achievement_Black_Mirror.webp"},
     "BLOODBATH": {"name": "Bloodbath", "completed": false, "category": "event", "icon": "assets/images/Achievement_Bloodbath.webp"},
     "BONED": {"name": "Boned", "completed": false, "category": "boss", "icon": "assets/images/Achievement_Boned.webp"},
     "GET_TERRASPARK_BOOTS": {"name": "Boots of the Hero", "completed": false, "category": "item", "icon": "assets/images/Achievement_Boots_of_the_Hero.webp"},
@@ -50,7 +50,7 @@ export class AppComponent {
     "FUNKYTOWN": {"name": "Funkytown", "completed": false, "category": "other", "icon": "assets/images/Achievement_Funkytown.webp"},
     "GELATIN_WORLD_TOUR": {"name": "Gelatin World Tour", "completed": false, "category": "enemy", "icon": "assets/images/Achievement_Gelatin_World_Tour.webp"},
     "GET_A_LIFE": {"name": "Get a Life", "completed": false, "category": "item", "icon": "assets/images/Achievement_Get_a_Life.webp"},
-    // "GLORIOUS_GOLDEN_POLE": {"name": "Glorious Golden Pole", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Glorious_Golden_Pole.webp"},
+    "GLORIOUS_GOLDEN_POLE": {"name": "Glorious Golden Pole", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Glorious_Golden_Pole.webp"},
     "GOBLIN_PUNTER": {"name": "Goblin Punter", "completed": false, "category": "event", "icon": "assets/images/Achievement_Goblin_Punter.webp"},
     "HEAD_IN_THE_CLOUDS": {"name": "Head in the Clouds", "completed": false, "category": "item", "icon": "assets/images/Achievement_Head_in_the_Clouds.webp"},
     "HEART_BREAKER": {"name": "Heart Breaker", "completed": false, "category": "item", "icon": "assets/images/Achievement_Heart_Breaker.webp"},
@@ -123,21 +123,29 @@ export class AppComponent {
     "WHERES_MY_HONEY": {"name": "Where's My Honey?", "completed": false, "category": "other", "icon": "assets/images/Achievement_Wheres_My_Honey.webp"},
     "WORM_FODDER": {"name": "Worm Fodder", "completed": false, "category": "boss", "icon": "assets/images/Achievement_Worm_Fodder.webp"},
     "YOU_AND_WHAT_ARMY": {"name": "You and What Army?", "completed": false, "category": "other", "icon": "assets/images/Achievement_You_and_What_Army.webp"},
-    // "SERVANT_IN_TRAINING": {"name": "Servant-in-Training", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Servant-in-Training.webp"},
+    "SERVANT_IN_TRAINING": {"name": "Servant-in-Training", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Servant-in-Training.webp"},
+    "GOOD_LITTLE_SLAVE": {"name": "Good Little Slave", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Good_Little_Slave.webp"},
+    "TROUT_MONKEY": {"name": "Trout Monkey", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Trout_Monkey.webp"},
+    "FAST_AND_FISHIOUS": {"name": "Fast and Fishious", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Fast_and_Fishious.webp"},
+    "SUPREME_HELPER_MINION": {"name": "Supreme Helper Minion!", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Supreme_Helper_Minion.webp"},
+    "YOU_CAN_DO_IT": {"name": "You Can Do It!", "completed": false, "category": "other", "icon": "assets/images/Achievement_You_Can_Do_It.webp"}
+  };
+    // "GLORIOUS_GOLDEN_POLE": {"name": "Glorious Golden Pole", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Glorious_Golden_Pole.webp"},
+    // "GET_CELL_PHONE": {"name": "Black Mirror", "completed": false, "category": "item", "icon": "assets/images/Achievement_Black_Mirror.webp"},
+
+  // "SERVANT_IN_TRAINING": {"name": "Servant-in-Training", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Servant-in-Training.webp"},
     // "GOOD_LITTLE_SLAVE": {"name": "Good Little Slave", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Good_Little_Slave.webp"},
     // "TROUT_MONKEY": {"name": "Trout Monkey", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Trout_Monkey.webp"},
     // "FAST_AND_FISHIOUS": {"name": "Fast and Fishious", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Fast_and_Fishious.webp"},
     // "SUPREME_HELPER_MINION": {"name": "Supreme Helper Minion!", "completed": false, "category": "fish", "icon": "assets/images/Achievement_Supreme_Helper_Minion.webp"},
-    "YOU_CAN_DO_IT": {"name": "You Can Do It!", "completed": false, "category": "other", "icon": "assets/images/Achievement_You_Can_Do_It.webp"}
-  };
 
   otherAchs: any = {
     "GELATIN_WORLD_TOUR": {"name": "Slimes", "value": 0, "max_value": 24, "icon": "assets/images/Achievement_Gelatin_World_Tour.webp"},
     "BULLDOZER": {"name": "Tiles", "value": 0, "max_value": 10000, "icon": "assets/images/Achievement_Bulldozer.webp"},
     "MARATHON_MEDALIST": {"name": "Distance", "value": 0, "max_value": 26.2, "max_pixels": 1106688, "icon": "assets/images/Achievement_Marathon_Medalist.webp"},
     "SLAYER_OF_WORLDS": {"name": "Bosses", "value": 0, "max_value": 15, "icon": "assets/images/Achievement_Slayer_of_Worlds.webp"},
-    "ZENITH": {"name": "Swords", "value": 0, "max_value": 10, "icon": "assets/images/Achievement_Infinity_1_Sword.webp"}
-    // "SUPREME_HELPER_MINION": {"name": "Quests", "value": 0, "max_value": 200, "icon": "assets/images/Achievement_Supreme_Helper_Minion.webp"}
+    "ZENITH": {"name": "Swords", "value": 0, "max_value": 10, "icon": "assets/images/Achievement_Infinity_1_Sword.webp"},
+    "SUPREME_HELPER_MINION": {"name": "Quests", "value": 0, "max_value": 200, "icon": "assets/images/Achievement_Supreme_Helper_Minion.webp"}
   };
 
   fishing: any = [
@@ -206,7 +214,8 @@ export class AppComponent {
 
   displayMissing: any = false;
   category: any = "all";
-  n_achievements: number = Object.keys(this.achievements).length;
+  includeFishing: any = false;
+  n_achievements: number = (this.includeFishing) ? 115 : 108;
   n_complete: number = 0;
 
   refreshTime: string = "";
@@ -224,7 +233,7 @@ export class AppComponent {
 
     // How often the achievements refresh
     // 2 minutes in milliseconds
-    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 120000); 
+    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 10000); 
     this.refreshID = setInterval(() => this.updateRefreshTimer(), 1000);
   }
 
@@ -283,8 +292,6 @@ export class AppComponent {
   getAchievementsFromFile() {
     this.appService.getAchievements().subscribe((achs: any) => {
       Object.keys(achs).forEach((ach: any) => {
-        // Skip fishing achievements
-        if(!this.fishing.includes(ach)) {
           var all_cond_completed = true;
           Object.keys(achs[ach]['Conditions']).forEach((cond: any) => {
             if(achs[ach]['Conditions'][cond]["Completed"] === false) {
@@ -337,15 +344,17 @@ export class AppComponent {
             }
           });
 
-          if(!this.achievements[ach]['completed'] && all_cond_completed) {
-            this.n_complete += 1;
-            this.achievements[ach]['completed'] = true;
+          if(!this.fishing.includes(ach)
+            || (this.fishing.includes(ach) && this.includeFishing === true)) {
+            if(!this.achievements[ach]['completed'] && all_cond_completed) {
+              this.n_complete += 1;
+              this.achievements[ach]['completed'] = true;
+            }
+            else if(this.achievements[ach]['completed'] && !all_cond_completed) {
+              this.n_complete -= 1;
+              this.achievements[ach]['completed'] = false;
+            }
           }
-          else if(this.achievements[ach]['completed'] && !all_cond_completed) {
-            this.n_complete -= 1;
-            this.achievements[ach]['completed'] = false;
-          }
-        }
       });
     });
   }
@@ -375,6 +384,17 @@ export class AppComponent {
     else {
       this.colorIncomplete = false;
     }
+  }
+
+  toggleFishing(e: any) {
+    if(e['target']['checked']) {
+      this.includeFishing = true;
+    }
+    else {
+      this.includeFishing = false;
+    }
+
+    this.n_achievements = (this.includeFishing) ? 115 : 108;
   }
 
   toggleGrayscale(e: any) {
@@ -409,11 +429,32 @@ export class AppComponent {
     else if(i === 1 && this.n_complete !== this.n_achievements && !this.showAllAch) {
       var incomplete: any = [];
       Object.keys(this.achievements).forEach((ach: any) => {
-        if(!this.achievements[ach]['completed']) {
-          incomplete.push(ach);
+        if(!this.achievements[ach]['completed'] && (!this.fishing.includes(ach)
+          || (this.fishing.includes(ach) && this.includeFishing === true))) {
+            incomplete.push(ach);
         }
       })
       return incomplete;
+    }
+    else if(i === 2) {
+      var others: any = [];
+      Object.keys(this.otherAchs).forEach((ach: any) => {
+        if(!this.fishing.includes(ach)
+          || (this.fishing.includes(ach) && this.includeFishing === true)) {
+            others.push(ach);
+        }
+      })
+      return others;
+    }
+    else if(i === 3) {
+      var all: any = [];
+      Object.keys(this.achievements).forEach((ach: any) => {
+        if(!this.fishing.includes(ach)
+          || (this.fishing.includes(ach) && this.includeFishing === true)) {
+            all.push(ach);
+        }
+      })
+      return all;
     }
     return Object.keys(obj);
   }

@@ -1,5 +1,4 @@
 <div>
-  <div *ngIf="allNpcsDefeated()" style="height: 40px;"></div>
   <div style="display: flex;">
     <label class="info" id="refresh-label">Refreshed {{refreshTime}} ago</label>
     <label class="info" style="margin-left: 10%;">{{n_complete}}/{{n_achievements}} Achievements Completed</label>
@@ -17,8 +16,9 @@
       <label class="ach-name">{{achievements[achievement]['name']}}</label>
     </div>
   </marquee>
+  <div *ngIf="allNpcsDefeated()" style="height: 44px;"></div>
   <div class="flex-ach">
-    <div *ngFor="let ach of getKeys(otherAchs)" class="icons">
+    <div *ngFor="let ach of getKeys(otherAchs,2)" class="icons">
       <div class="centerIcons">
         <img src={{getIcon(ach,2)}} alt="image">
       </div>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="menu">
-    <div *ngFor="let achievement of getKeys(achievements)" class="">
+    <div *ngFor="let achievement of getKeys(achievements,3)" class="">
       <div *ngIf="displayMissing === true && achievements[achievement]['completed'] === false">
         <div *ngIf="category === 'all'">
           <div>
@@ -97,6 +97,10 @@
     <div>
       <label>Color Incomplete</label>
       <input type="checkbox" (click)="toggleColorForIncomplete($event)">
+    </div>
+    <div>
+      <label>Include Fishing</label>
+      <input type="checkbox" (click)="toggleFishing($event)">
     </div>
   </div>
 </div>
