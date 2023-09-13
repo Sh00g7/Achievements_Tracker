@@ -233,7 +233,7 @@ export class AppComponent {
 
     // How often the achievements refresh
     // 2 minutes in milliseconds
-    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 10000); 
+    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 120000); 
     this.refreshID = setInterval(() => this.updateRefreshTimer(), 1000);
   }
 
