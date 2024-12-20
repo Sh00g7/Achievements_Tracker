@@ -210,7 +210,14 @@ export class AppComponent {
     "assets/Swords/Star_Wrath.webp",
     "assets/Swords/Meowmere.webp"
   ];
-    
+
+  sword_achs: any = [
+    "STILL_HUNGRY",
+    "SWORD_OF_THE_HERO",
+    "TIN_FOIL_HATTER",
+    "BALEFUL_HARVEST",
+    "STING_OPERATION"
+  ]
 
   displayMissing: any = false;
   category: any = "all";
@@ -233,7 +240,7 @@ export class AppComponent {
 
     // How often the achievements refresh
     // 2 minutes in milliseconds
-    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 10000); 
+    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 120000); 
     this.refreshID = setInterval(() => this.updateRefreshTimer(), 1000);
   }
 
@@ -264,7 +271,7 @@ export class AppComponent {
       ele.checked = false;
     });
 
-    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 10000); 
+    this.intervalID = setInterval(() => this.getAchievementsFromFile(), 120000); 
     this.refreshID = setInterval(() => this.updateRefreshTimer(), 1000);
   }
 
@@ -296,6 +303,41 @@ export class AppComponent {
           Object.keys(achs[ach]['Conditions']).forEach((cond: any) => {
             if(achs[ach]['Conditions'][cond]["Completed"] === false) {
               all_cond_completed = false;
+            }
+
+            // Check off swords
+            if(this.sword_achs.includes(ach) && achs[ach]["Conditions"][cond]["Completed"]) {
+              var ele: HTMLInputElement;
+
+              if(ach === "STILL_HUNGRY") {
+                ele = <HTMLInputElement> document.getElementById("assets/Swords/Enchanted_Sword.webp");
+              }
+              else if(ach === "SWORD_OF_THE_HERO") {
+                var ele = <HTMLInputElement> document.getElementById("assets/Swords/Terra_Blade.webp");
+              }
+              else if(ach === "TIN_FOIL_HATTER") { 
+                var ele = <HTMLInputElement> document.getElementById("assets/Swords/Influx_Waver.webp");
+              }
+              else if(ach === "BALEFUL_HARVEST") { 
+                var ele = <HTMLInputElement> document.getElementById("assets/Swords/The_Horsemans_Blade.webp");
+              }
+              else {
+                var ele = <HTMLInputElement> document.getElementById("assets/Swords/Bee_Keeper.webp");
+              }
+
+              if(!ele.checked) {
+                ele.checked = true;
+                this.otherAchs['ZENITH']['value']++;
+              }
+            }
+            else if(ach === "GET_ZENITH" && achs[ach]["Conditions"][cond]["Completed"]) {
+              this.swords.forEach((sword: any) => {
+                var ele = <HTMLInputElement> document.getElementById(sword);
+                if(!ele.checked) {
+                  ele.checked = true;
+                  this.otherAchs['ZENITH']['value']++;
+                }
+              });
             }
 
             if(Object.keys(this.otherAchs).includes(ach)) {

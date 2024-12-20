@@ -1,32 +1,14 @@
 # Terraria Achievements Tracker
 
-## Setup
+![screenshot](screenshots/interact_view.png)
 
-### Client
+![screenshot](screenshots/ingame.png)
+
+## Setup
 
 Download [Node.js](https://nodejs.org/en/download)
 
-Open Windows Powershell
-
-`cd path\to\Terraria-Achievements-Tracker\client`
-
-`npm install`
-
-### Server
-
-Move the server folder into path\to\Terraria-Achievements-Tracker\
-
-Download [.NET Installer](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
-
-Open another tab in Windows Powershell
-
-`cd path\to\Terraria-Achievements-Tracker\server`
-
-Add your Steam ID and path to achievements-steam.dat to the C# file
-
-`dotnet build`
-
-Download [Python](https://www.python.org/downloads/)
+Download [Python](https://www.python.org/downloads/release/python-3110/)
 
 Add Python to your PATH variables
 
@@ -36,31 +18,17 @@ Add Python to your PATH variables
 
   - Variable name: Path
 
-  - Variable value: C:\Users\user\AppData\Local\Programs\Python\Python311\Scripts\
+  - Variable value: %LocalAppData%\Programs\Python\Python311\Scripts\
 
-    - *Replace user with your username
+Run `setup.bat` by double clicking the file
 
-  - Might need to restart Powershell
+* If the setup fails, open Windows Powershell and try the following command, which allows you to run the virtual environment
 
-Create a virtual environment
-
-`pip install virtualenv`
-
-`python -m venv venv`
-
-`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` (Allows you to run scripts for the next command)
-
-`.\venv\Scripts\activate`
-
-`pip install -r requirements.txt`
+* `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 ## Run
 
-### Client
-`npm start`
-
-### Server
-`python server.py`
+Run `start.bat` by double clicking the file
 
 ## Exit
 
